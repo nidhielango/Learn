@@ -7,13 +7,14 @@
 
 import UIKit
 
-class CreateNotesViewController: UIViewController {
+class CreateNotesViewController: UIViewController, UIImagePickerControllerDelegate,
+    UINavigationControllerDelegate {
     
    
     @IBOutlet weak var setDateButton: UIButton!
 
    // @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-   
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var navBar: UINavigationBar!
@@ -21,9 +22,19 @@ class CreateNotesViewController: UIViewController {
     @IBOutlet weak var notesTextView: UITextView!
     
     var date = Date()
+    var imagePicker = UIImagePickerController()
+    var images: [UIImage] = []
+    var startWithCamera = false
     
     override func viewWillAppear(_ animated: Bool) {
         updateDate()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if startWithCamera {
+            startWithCamera = false
+            cameraClicked("")
+        }
     }
     
     func updateDate() {
@@ -35,10 +46,12 @@ class CreateNotesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+    
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object:nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object:nil)
+        
+        imagePicker.delegate = self
         
     }
     
@@ -54,6 +67,8 @@ class CreateNotesViewController: UIViewController {
     }
     
     @IBAction func cameraClicked(_ sender: Any) {
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
     
    
@@ -69,7 +84,26 @@ class CreateNotesViewController: UIViewController {
         
     }
     
- 
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        if let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
+            images.append(chosenImage)
+            
+            // image properties
+            let imageView = UIImageView()
+            imageView.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 70.0).isActive = true
+            imageView.image = chosenImage
+            imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
+            stackView.addArrangedSubview(imageView)
+            imagePicker.dismiss(animated: true){
+                // change image
+            }
+        }
+    }
+    
+   
+    
     @objc func KeyboardWillHide(notification:Notification){
         changeKeyboardHeight(notification:notification)
         
@@ -80,6 +114,7 @@ class CreateNotesViewController: UIViewController {
         
     }
     
+
     func changeKeyboardHeight(notification:Notification){
         if let keyboardFrame =
             notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -88,15 +123,6 @@ class CreateNotesViewController: UIViewController {
             
         }
     }
- 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     
 
 }

@@ -23,7 +23,14 @@ class LearnTableViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      
+        if segue.identifier == "goToNew" {
+            if let text = sender as? String {
+                if text == "camera" {
+                    let createVC = segue.destination as? CreateNotesViewController
+                    createVC?.startWithCamera = true 
+                }
+            }
+        }
     }
 
     

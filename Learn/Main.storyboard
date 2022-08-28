@@ -144,6 +144,10 @@
                                             <action selector="cameraClicked:" destination="nO6-R8-YEy" eventType="touchUpInside" id="cDD-lx-zgn"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pj8-vf-1ZM">
+                                        <rect key="frame" x="209" y="0.0" width="205" height="98"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </stackView>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="M9F-zL-nCg"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="1GM-s1-DwG"/>
@@ -176,6 +180,7 @@
                         <outlet property="navBar" destination="4pH-If-y3d" id="rNd-dl-f4T"/>
                         <outlet property="notesTextView" destination="cDy-q0-iC9" id="qDr-C7-AZ9"/>
                         <outlet property="setDateButton" destination="EHZ-ik-Bed" id="2Mj-F6-Dwo"/>
+                        <outlet property="stackView" destination="Pj8-vf-1ZM" id="4or-oO-cvw"/>
                         <segue destination="wFw-vp-Rwh" kind="presentation" identifier="goToNew" destinationCreationSelector="bottomConstraint:" id="weo-Rh-elt"/>
                     </connections>
                 </viewController>
