@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class CreateNotesViewController: UIViewController, UIImagePickerControllerDelegate,
     UINavigationControllerDelegate {
@@ -46,6 +48,7 @@ class CreateNotesViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
     
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object:nil)
         
@@ -64,6 +67,7 @@ class CreateNotesViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func cancelClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cameraClicked(_ sender: Any) {
@@ -71,9 +75,15 @@ class CreateNotesViewController: UIViewController, UIImagePickerControllerDelega
         present(imagePicker, animated: true, completion: nil)
     }
     
-   
-    
     @IBAction func saveClicked(_ sender: Any) {
+        if let realm = try? Realm(){
+            let entry = Entry()
+            entry.text = notesTextView.text
+            entry.date = date
+            for image in images {
+                let picture = Picture()
+            }
+        }
     }
 
     @IBAction func calendarClicked(_ sender: Any) {
@@ -84,7 +94,7 @@ class CreateNotesViewController: UIViewController, UIImagePickerControllerDelega
         
     }
     
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         if let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
             images.append(chosenImage)
             
@@ -118,7 +128,7 @@ class CreateNotesViewController: UIViewController, UIImagePickerControllerDelega
     func changeKeyboardHeight(notification:Notification){
         if let keyboardFrame =
             notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyHeight = keyboardFrame.cgRectValue.height
+            _ = keyboardFrame.cgRectValue.height
             //bottomConstraint.constant = keyHeight + 10
             
         }

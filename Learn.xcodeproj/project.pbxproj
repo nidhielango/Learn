@@ -17,6 +17,9 @@
 		3C2A158028B8231A008C84E8 /* LearnTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A157F28B8231A008C84E8 /* LearnTableViewController.swift */; };
 		3C2A158228B8231E008C84E8 /* CreateNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A158128B8231E008C84E8 /* CreateNotesViewController.swift */; };
 		3C2A158428B82323008C84E8 /* DetailedNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A158328B82323008C84E8 /* DetailedNotesViewController.swift */; };
+		3CFD5FCF28BC51E800A68C9E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 3CFD5FCE28BC51E800A68C9E /* Realm */; };
+		3CFD5FD128BC51E800A68C9E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3CFD5FD028BC51E800A68C9E /* RealmSwift */; };
+		3CFD5FD328BC736700A68C9E /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD5FD228BC736700A68C9E /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,7 @@
 		3C2A157F28B8231A008C84E8 /* LearnTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnTableViewController.swift; sourceTree = "<group>"; };
 		3C2A158128B8231E008C84E8 /* CreateNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNotesViewController.swift; sourceTree = "<group>"; };
 		3C2A158328B82323008C84E8 /* DetailedNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedNotesViewController.swift; sourceTree = "<group>"; };
+		3CFD5FD228BC736700A68C9E /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CFD5FD128BC51E800A68C9E /* RealmSwift in Frameworks */,
+				3CFD5FCF28BC51E800A68C9E /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +79,7 @@
 				3C2A157528B82205008C84E8 /* Info.plist */,
 				3C2A157D28B82298008C84E8 /* ImageCollectionViewController.swift */,
 				3C2A158128B8231E008C84E8 /* CreateNotesViewController.swift */,
+				3CFD5FD228BC736700A68C9E /* Models.swift */,
 				3C2A158328B82323008C84E8 /* DetailedNotesViewController.swift */,
 				3C2A157F28B8231A008C84E8 /* LearnTableViewController.swift */,
 			);
@@ -95,6 +102,10 @@
 			dependencies = (
 			);
 			name = Learn;
+			packageProductDependencies = (
+				3CFD5FCE28BC51E800A68C9E /* Realm */,
+				3CFD5FD028BC51E800A68C9E /* RealmSwift */,
+			);
 			productName = Learn;
 			productReference = 3C2A156428B82204008C84E8 /* Learn.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +134,9 @@
 				Base,
 			);
 			mainGroup = 3C2A155B28B82204008C84E8;
+			packageReferences = (
+				3CFD5FCD28BC51E800A68C9E /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 3C2A156528B82204008C84E8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -153,6 +167,7 @@
 				3C2A157E28B82298008C84E8 /* ImageCollectionViewController.swift in Sources */,
 				3C2A156C28B82204008C84E8 /* ViewController.swift in Sources */,
 				3C2A158428B82323008C84E8 /* DetailedNotesViewController.swift in Sources */,
+				3CFD5FD328BC736700A68C9E /* Models.swift in Sources */,
 				3C2A156828B82204008C84E8 /* AppDelegate.swift in Sources */,
 				3C2A156A28B82204008C84E8 /* SceneDelegate.swift in Sources */,
 				3C2A158228B8231E008C84E8 /* CreateNotesViewController.swift in Sources */,
@@ -281,6 +296,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -298,9 +314,11 @@
 				DEVELOPMENT_TEAM = 8NSF94AA5M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Learn/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need your photos of your notes";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -324,11 +342,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8NSF94AA5M;
+				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Learn/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need your photos of your notes";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -366,6 +387,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3CFD5FCD28BC51E800A68C9E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3CFD5FCE28BC51E800A68C9E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CFD5FCD28BC51E800A68C9E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		3CFD5FD028BC51E800A68C9E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CFD5FCD28BC51E800A68C9E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3C2A155C28B82204008C84E8 /* Project object */;
 }
