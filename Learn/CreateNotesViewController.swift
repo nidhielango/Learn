@@ -23,10 +23,11 @@ class CreateNotesViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var notesTextView: UITextView!
     
-    var date = Date()
+
     var imagePicker = UIImagePickerController()
     var images: [UIImage] = []
     var startWithCamera = false
+    var entry = Entry()
     
     override func viewWillAppear(_ animated: Bool) {
         updateDate()
@@ -40,9 +41,7 @@ class CreateNotesViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func updateDate() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "E, MMM d, yyyy"
-        navBar.topItem?.title = formatter.string(from: date)
+        navBar.topItem?.title = entry.dateString()
     }
     
     override func viewDidLoad() {
@@ -62,7 +61,7 @@ class CreateNotesViewController: UIViewController, UIImagePickerControllerDelega
         notesTextView.isHidden = false
         datePicker.isHidden = true
         setDateButton.isHidden = true
-        date = datePicker.date
+        entry.date = datePicker.date
         updateDate()
     }
     
@@ -77,9 +76,7 @@ class CreateNotesViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func saveClicked(_ sender: Any) {
         if let realm = try? Realm(){
-            let entry = Entry()
             entry.text = notesTextView.text
-            entry.date = date
             for image in images {
                 let picture = Picture()
             }
@@ -90,7 +87,7 @@ class CreateNotesViewController: UIViewController, UIImagePickerControllerDelega
         notesTextView.isHidden = true
         datePicker.isHidden = false
         setDateButton.isHidden = false
-        datePicker.date = date
+        datePicker.date = entry.date
         
     }
     

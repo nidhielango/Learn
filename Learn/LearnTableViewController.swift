@@ -21,6 +21,7 @@ class LearnTableViewController: UITableViewController {
         whiteAddButton.imageView?.contentMode = .scaleAspectFit
         whiteCameraButton.imageView?.contentMode = .scaleAspectFit
         
+        
     }
     
     func getEntries() {
@@ -71,12 +72,26 @@ class LearnTableViewController: UITableViewController {
             
             if let entry = entries?[indexPath.row]{
                 cell.previewTextLabel.text = entry.text
+                if let image = entry.pictures.first?.thumbnail(){
+                    cell.imageViewWidth.constant = 100
+                    cell.ImageView.image = image
+                } else {
+                    cell.imageViewWidth.constant = 0
+                }
+                cell.monthLabel.text = entry.monthString()
+                cell.dayLabel.text = entry.dayString()
+                cell.yearLabel.text = entry.yearString()
             }
             
             return cell
         }
         return UITableViewCell()
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAtindexPath: IndexPath) -> CGFloat{
+        return 100
+    }
+    
 }
 
 
@@ -85,4 +100,6 @@ class NotesCell : UITableViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
 }
